@@ -28,3 +28,18 @@ def dejar_solo_numeros(data, column):
     df = data.copy()
     df[column]=df[column].str.replace(r'\D', '', regex=True)
     return df
+
+def descargar_y_limpar(url,sheet):
+    gs=GoogleSheet()
+    gs.connect_with_spreadsheet(url)
+    data=gs.get_data(sheet)
+
+    data = data.iloc[:,[0, 7, 8, 14, 19, 20, 21]].drop(0).reset_index(drop=True)
+
+    data=melt(data)
+    data=data.dropna(subset='Operacion')
+    data=data[data['Operacion']!='0']
+
+    data=dejar_solo_numeros(data,'Operacion')
+
+    return data
