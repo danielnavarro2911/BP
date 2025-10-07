@@ -29,8 +29,7 @@ def dejar_solo_numeros(data, column):
     df[column]=df[column].str.replace(r'\D', '', regex=True)
     return df
 
-def descargar_y_limpar(url,sheet):
-    gs=GoogleSheet()
+def descargar_y_limpar(url,sheet,gs):
     gs.connect_with_spreadsheet(url)
     data=gs.get_data(sheet)
 
