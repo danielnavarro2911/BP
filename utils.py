@@ -15,7 +15,7 @@ def melt(df):
     
     melted= pd.melt(
         df,
-        id_vars=['ID','No. Ente Cliente','No. Identificación Cliente','Tipo Producto','Nombre Completo Ejecutivo','No.Usuario Responsable'],                        # Columna que se repetirá
+        id_vars=['ID','No. Ente Cliente','No. Identificación Cliente','Tipo Producto'],                        # Columna que se repetirá
         value_vars=columnas_a_unificar,      # Columnas a convertir en filas
         value_name='Operacion'              # Nombre de la nueva columna con los valores
     )
