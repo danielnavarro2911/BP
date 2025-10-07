@@ -39,6 +39,6 @@ def descargar_y_limpar(url,sheet,gs):
     data=data.dropna(subset='Operacion')
     data=data[data['Operacion']!='0']
 
-    data=dejar_solo_numeros(data,'Operacion')
+    #data=dejar_solo_numeros(data,'Operacion')
 
     return data
