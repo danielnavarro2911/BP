@@ -66,12 +66,12 @@ def descargar_y_limpar(url,sheet,gs):
     data=gs.get_data(sheet)
 
     data = data.iloc[:,[0, 7, 8, 14, 19, 20, 21]].drop(0).reset_index(drop=True)
-
+    data=data.dropna(subset='Operacion')
     data=data.astype(str)
 
     data=melt(data)
-    data=data.dropna(subset='Operacion')
     data=data[data['Operacion']!='0']
+    data=data[data['Operacion']!='']
 
     data['Tipo Producto']=limpieza_palabras(data['Tipo Producto'])
 
