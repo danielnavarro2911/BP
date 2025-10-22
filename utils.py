@@ -72,6 +72,7 @@ def descargar_y_limpar(url,sheet,gs):
     data=melt(data)
     #data=data.dropna(subset='Operacion')
     #data=data[data['Operacion']!='0']
+    data['Operacion']=data['Operacion'].map(lambda x : '' if x=='0' else x)
     
 
     data['Tipo Producto']=limpieza_palabras(data['Tipo Producto'])
@@ -87,5 +88,7 @@ def descargar_y_limpar(url,sheet,gs):
     data=dejar_solo_numeros(data,'Operacion')
 
     #data=data[data['Operacion']!='']
+
+    data=data.drop_duplicates()
 
     return data
